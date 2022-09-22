@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven 'mvn'
+    }
 
     stages 
     {
@@ -15,10 +18,10 @@ pipeline {
                 echo 'Test App'
             }
         }
-        stage('Deploy') 
+        stage('Maven') 
         {
             steps {
-                echo 'Deploy App'
+                sh 'clean install'
             }
         }
     }
